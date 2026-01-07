@@ -1,0 +1,36 @@
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <DFRobotDFPlayerMini.h>
+
+SoftwareSerial mySoftwareSerial(10, 11); // RX, TX
+DFRobotDFPlayerMini myDFPlayer;
+
+void setup() {
+  Serial.begin(9600);
+  mySoftwareSerial.begin(9600);
+
+  Serial.println(F("--- TESTE MP3 (ARQUIVOS NA RAIZ) ---"));
+
+  if (!myDFPlayer.begin(mySoftwareSerial)) {
+    Serial.println(F("Erro: Verifique conexoes e cartao SD"));
+    while(true);
+  }
+
+  Serial.println(F("DFPlayer Online!"));
+  myDFPlayer.volume(30); // Volume 0-30
+}
+
+void loop() {
+  Serial.println(F("Tocando o PRIMEIRO arquivo que foi copiado para o SD..."));
+  
+  // MUDANÇA AQUI:
+  // play(1) toca o primeiro arquivo físico encontrado na raiz do cartão.
+  myDFPlayer.play(2); 
+  
+  delay(5000); // Espera 5 segundos
+  
+  // Se quiser testar o próximo:
+  // Serial.println(F("Tocando o SEGUNDO arquivo..."));
+  // myDFPlayer.play(2);
+  // delay(5000);
+}
