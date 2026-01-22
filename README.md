@@ -1,4 +1,4 @@
-# ⚔️ Arduino Lightsaber (WS2813 + DFPlayer)
+# ⚔️ Arduino Lightsaber 
 
 ![Status](https://img.shields.io/badge/Status-Functional-brightgreen)
 ![Platform](https://img.shields.io/badge/Platform-Arduino%20Nano-blue)
